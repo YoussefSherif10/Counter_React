@@ -4,7 +4,6 @@ class Counter extends Component {
     // state is a special object that contains any data that component needs
     state = {
         count: 0,
-        tags: ['tag1', 'tag2', 'tag3'],
     };
 
     render() {
@@ -14,14 +13,10 @@ class Counter extends Component {
             // div just the root one
             // braces used for dynamic rendering
             // class attribute is className as class is a reserved word in js
-            <React.Fragment>
+            <div>
                 <span className={this.classes()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">increment</button>
-                <ul>
-                    {this.state.tags.length === 0 && <p>Please Add New Tag !</p>}
-                    {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
-                </ul>
-            </React.Fragment>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-lg">increment</button>
+            </div>
         );
     }
 
