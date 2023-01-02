@@ -3,7 +3,8 @@ import React, {Component} from "react";
 class Counter extends Component {
     // state is a special object that contains any data that component needs
     state = {
-        value: this.props.value, // props of a component is used to transfer data among components
+        // props of a component is used to transfer data among components and it is RO. while, state is private data
+        value: this.props.counter.value,
     };
 
     render() {
@@ -16,6 +17,7 @@ class Counter extends Component {
             <div>
                 <span className={this.classes()}>{this.formatCount()}</span>
                 <button onClick={this.handleIncrement} className="btn btn-secondary btn-lg">increment</button>
+                <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-lg m-2">Delete</button>
             </div>
         );
     }
