@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class Counter extends Component {
     // state is a special object that contains any data that component needs
     state = {
-        count: 0,
+        value: this.props.value, // props of a component is used to transfer data among components
     };
 
     render() {
@@ -23,18 +23,18 @@ class Counter extends Component {
     handleIncrement = () => {
         /* this function handles the increment of the counter. this gets passed by reference
         * so I am making it arrow function to set this value to the class */
-        this.setState({count: this.state.count + 1}); // override the state with the new value
+        this.setState({value: this.state.value + 1}); // override the state with the new value
     }
 
     classes() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatCount(){
-        const {count} = this.state;   // this.state destruction to avoid repetition
-        return count === 0 ? <h1>Zero</h1> : count; // jsx expressions are just like normal js
+        const {value} = this.state;   // this.state destruction to avoid repetition
+        return value === 0 ? <h1>Zero</h1> : value; // jsx expressions are just like normal js
     }
 }
 
