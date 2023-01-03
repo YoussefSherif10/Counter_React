@@ -18,7 +18,8 @@ class Counters extends Component {
 
     render() {
         return (
-            <div>
+            <main>
+            <div className="col-lg-8 mx-auto p-4 py-md-5">
                 <button onClick={this.handleReset} className="btn btn-primary btn-lg">Reset</button>
                 {this.state.counters.map(counter =>
                     <Counter
@@ -28,6 +29,7 @@ class Counters extends Component {
                         onIncrement={this.handleIncrement}
                     />)}
             </div>
+            </main>
         );
     }
 
