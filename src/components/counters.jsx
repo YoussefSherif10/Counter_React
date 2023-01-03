@@ -9,7 +9,7 @@ class Counters extends Component {
          we call it by reference.
          */
         counters: [
-            {id: 1 , value: 4},
+            {id: 1 , value: 0},
             {id: 2 , value: 0},
             {id: 3 , value: 0},
             {id: 4 , value: 0},
@@ -19,8 +19,14 @@ class Counters extends Component {
     render() {
         return (
             <div>
+                <button onClick={this.handleReset} className="btn btn-primary btn-lg">Reset</button>
                 {this.state.counters.map(counter =>
-                    <Counter key={counter.id} onDelete={this.handleDelete} counter={counter} />)}
+                    <Counter
+                        key={counter.id}
+                        onDelete={this.handleDelete}
+                        counter={counter}
+                        onIncrement={this.handleIncrement}
+                    />)}
             </div>
         );
     }
@@ -34,6 +40,24 @@ class Counters extends Component {
 
         const counters = this.state.counters.filter(counter => counter.id !== counterId);
         this.setState({ counters });
+    }
+
+    handleIncrement = (counter) => {
+        /* this function handles the increment of the counter. this gets passed by reference
+        * so I am making it arrow function to set this value to the class */
+        // override the state with the new value
+
+        const index = this.state.counters.indexOf(counter);
+        counter.value++;
+        const counters = [...this.state.counters];
+        counters[index] = counter;
+        this.setState({counters});
+
+    }
+
+    handleReset = () => {
+        const counters = this.state.counters.map(counter => {counter.value = 0 ; return counter});
+        this.setState({counters});
     }
 }
 
