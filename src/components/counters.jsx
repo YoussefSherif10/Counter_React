@@ -1,7 +1,7 @@
 import React from "react";
 import Counter from "./counter";
 
-const Counters = ({onReset, onIncrement, counters, onDelete}) => {
+const Counters = ({onReset, onIncrement, counters, onDelete, onDecrement}) => {
     return (
         <main>
             <div className="col-lg-8 mx-auto p-4 py-md-5">
@@ -12,6 +12,7 @@ const Counters = ({onReset, onIncrement, counters, onDelete}) => {
                         onDelete={onDelete}
                         counter={counter}
                         onIncrement={onIncrement}
+                        onDecrement={onDecrement}
                     />)}
             </div>
         </main>

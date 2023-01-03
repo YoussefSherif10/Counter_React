@@ -18,8 +18,15 @@ class Counter extends Component {
             // class attribute is className as class is a reserved word in js
             <div>
                 <span className={this.classes()}>{this.formatCount()}</span>
-                <button onClick={() => this.props.onIncrement(this.props.counter)} className="btn btn-secondary btn-lg">increment</button>
-                <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-lg m-2">Delete</button>
+                <button onClick={() => this.props.onIncrement(this.props.counter)}
+                        className="btn btn-secondary btn-lg">+
+                </button>
+                <button onClick={() => this.props.onDecrement(this.props.counter)}
+                        className={this.decrementClasses()}>-
+                </button>
+                <button onClick={() => this.props.onDelete(this.props.counter.id)}
+                        className="btn btn-danger btn-lg m-2">X
+                </button>
             </div>
         );
     }
@@ -30,10 +37,15 @@ class Counter extends Component {
         return classes;
     }
 
-    formatCount(){
+    formatCount() {
         const {value} = this.props.counter;   // this.state destruction to avoid repetition
         return value === 0 ? <h1>Zero</h1> : value; // jsx expressions are just like normal js
     }
+
+    decrementClasses () {
+        return (this.props.counter.value === 0) ? "btn btn-dark btn-lg m-2" : "btn btn-secondary btn-lg m-2";
+    }
+
 }
 
 export default Counter;
