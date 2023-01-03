@@ -22,7 +22,7 @@ class App extends Component{
   render() {
       return (
           <div className="App">
-              <Navbar />
+              <Navbar countersNumbers={this.state.counters.filter(c => c.value > 0).length} />
               <Counters
                   onDelete={this.handleDelete}
                   onIncrement={this.handleIncrement}
